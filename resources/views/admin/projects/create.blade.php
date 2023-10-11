@@ -41,6 +41,14 @@
                                 <label for="" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image">
                             </div>
+
+                            <label for="" class="form-label">Type
+                                <select name="type_id" class="form-select mb-3">
+                                    @foreach ($types as $type)
+                                        <option value="{{ $type->id }}"> {{ $type->name }} </option>
+                                    @endforeach
+                                </select>
+                            </label>
     
                             <div class="mb-3">
                                 <label for="" class="form-label">Publication Date</label>

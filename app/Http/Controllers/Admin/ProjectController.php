@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //Uses 'Project' model
 use App\Models\Project;
+//Uses 'Project' model
+use App\Models\Type;
 //Uses 'ProjectStoreRequest' request
 use App\Http\Requests\ProjectStoreRequest;
 
@@ -21,8 +23,10 @@ class ProjectController extends Controller
     //'CREATE' FUNCTION
     public function create() {
 
+        $types = Type::all();
+
         //Returns 'create' view
-        return view('admin.projects.create');
+        return view('admin.projects.create', ['types' => $types]);
     }
 
 
@@ -101,8 +105,10 @@ class ProjectController extends Controller
         //Fetches an entry from 'Project' table trough 'Project' model using the '$slug' as finder for a 'where' query ('findOrFail()' works only with id's)
         $project = Project::where('slug', $slug)->first();
 
+        $types = Type::all();
+
         //Returns 'show' view with 'project' as second argument, from '$project'
-        return view('admin.projects.edit', ['project'=>$project]);
+        return view('admin.projects.edit', ['project'=>$project], ['types'=>$types]);
 
     }
 

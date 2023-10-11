@@ -40,7 +40,8 @@ class ProjectStoreRequest extends FormRequest
             'image' => 'required',
             'publication_date' => 'required',
             'technologies_used' => 'required',
-            'git_link' => 'required'
+            'git_link' => 'required',
+            'type_id' => 'required| exists:types,id'
         ];
     }
 }
