@@ -24,6 +24,10 @@ class Project extends Model
         'publication_date' => 'date:Y-m-d',
     ];
 
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
+
     public function getter_publication_date() {
         return date('d-m-y', strtotime($this->publication_date));
     }
